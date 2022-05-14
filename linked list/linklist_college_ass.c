@@ -31,10 +31,10 @@ void reversal()
     struct Node *prev=NULL, *current=first, *next=NULL;
     while(current !=NULL)
     {
+        next=prev;
         prev=current;
-        current=next;
-        next=current->next;
-        current->next=prev;
+        current=current->next;
+        prev->next=next;
     }
     first=prev;
 }

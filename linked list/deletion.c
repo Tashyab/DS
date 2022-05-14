@@ -15,7 +15,7 @@ int createll(int l[], int n)
     first->next=NULL;
     last=first;
 
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
         struct Node* t=(struct Node*) malloc(sizeof(struct Node*));
         t->data=l[i];
@@ -63,6 +63,7 @@ void main()
     int arr[]={23, 22, 1, 3, 43, 18};
     createll(arr, 6);
     display();
+    delete(3);
     printf("\n");
     display();
 }
