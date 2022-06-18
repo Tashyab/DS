@@ -28,12 +28,13 @@ int createll(int l[], int n)
 
 int search(struct Node *t, int n)
 {
-    while (t!=NULL) 
+    struct Node *p = t;
+    while (p!=NULL) 
     {
-        if(t->data==n)
+        if(p->data==n)
             return 1;
         else
-            t=t->next;
+            p=p->next;
     }
     return 0;
 }

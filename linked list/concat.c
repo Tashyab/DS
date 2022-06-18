@@ -42,7 +42,6 @@ struct Node* catll(struct Node* head_f, struct Node* head_s)
         t=t->next;
     }
     t->next=head_s;
-    second=NULL;
     struct Node* third=first;
     return third;
 }

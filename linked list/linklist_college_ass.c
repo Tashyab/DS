@@ -28,15 +28,15 @@ void createllist(int arr[], int l)
 
 void reversal()
 {
-    struct Node *prev=NULL, *current=first, *next=NULL;
+    struct Node *before=NULL, *current=first, *after=NULL;
     while(current !=NULL)
     {
-        next=prev;
-        prev=current;
+        after=before;
+        before=current;
         current=current->next;
-        prev->next=next;
+        before->next=after;
     }
-    first=prev;
+    first=before;
 }
 
 void disp(int index, int k)
@@ -85,16 +85,14 @@ void insertion(int d, int in)
 
 void deletion(int in)
 {
-    struct Node *p, *q;
+    struct Node *p=first, *q;
     if(in==1)
     {
-        p=first;
         first=first->next;
         free(p);
     }
     else
     {
-        p=first;
         q=NULL;
         for (int i = 0; i < in-1; i++)
         {

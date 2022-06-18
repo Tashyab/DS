@@ -47,14 +47,12 @@ struct Node* mergell(struct Node *first, struct Node* second)
         third=f;
         last=f;
         f=f->next;
-        last->next=NULL;
     }
     else
     {
         third=s;
         last=s;
         s=s->next;
-        last->next=NULL;
     }
 
     while(f!=NULL && s!=NULL)
@@ -64,14 +62,12 @@ struct Node* mergell(struct Node *first, struct Node* second)
             last->next=f;
             last=f;
             f=f->next;
-            last->next=NULL;
         }
         else
         {
             last->next=s;
             last=s;
             s=s->next;
-            last->next=NULL;
         }
     }
     if(f!=NULL)

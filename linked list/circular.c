@@ -27,18 +27,17 @@ void createll(struct Node *head, int l[], int n)
 void display()
 {
     struct Node *t=first;
-    // int flag=0;
-    // while(flag!=28)
-    // {
-    //     printf("%d ", t->data);
-    //     t=t->next;
-    //     flag++;
-    // }
     do
     {
         printf("%d ", t->data);
         t=t->next;
     } while (t!=first);
+
+    // while(t->next!=first)
+    // {
+    //     printf("%d ", t->data);
+    //     t = t->next;
+    // }
 }
 
 void insertion_beforehead(int d)
@@ -81,7 +80,11 @@ void main()
     display();
     printf("\n");
     insertion_beforehead(0);
+    display();
+    printf("\n");
     deletion_ofhead();
+    display();
+    printf("\n");
     insertion_beforehead(69);
     display();
 }
