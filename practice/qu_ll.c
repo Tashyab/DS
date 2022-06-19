@@ -7,37 +7,34 @@ struct Qnode
     struct Qnode *next;
 };
 
-struct Qnode* createhead(struct Qnode **head, int d)
+struct Qnode *createhead(struct Qnode **head, struct Qnode **rear, int d)
 {
     *head = (struct Qnode *)malloc(sizeof(struct Qnode));
     (*head)->next = NULL;
     (*head)->data = d;
+    (*rear) = (*head);
 }
 
-void enq(struct Qnode **head)
+void enq(struct Qnode **head, struct Qnode **rear)
 {
     int d;
     printf("Enter data: ");
     scanf("%d", &d);
-    if(*head==NULL)
+    if (*head == NULL)
     {
-        createhead(head, d);
+        createhead(head, rear, d);
         return;
     }
-    struct Qnode *t = *head;
-    while(t->next!=NULL)
-    {
-        t = t->next;
-    }
-    struct Qnode *new =(struct Qnode*) malloc(sizeof(struct Qnode));
-    t->next = new;
+    struct Qnode *new = (struct Qnode *)malloc(sizeof(struct Qnode));
+    (*rear)->next = new;
     new->next = NULL;
     new->data = d;
+    (*rear) = new;
 }
 
 void deq(struct Qnode **head)
 {
-    if(*head==NULL)
+    if (*head == NULL)
     {
         printf("No data to dequeue.\n");
         return;
@@ -51,13 +48,13 @@ void deq(struct Qnode **head)
 
 void display(struct Qnode *head)
 {
-    if(head==NULL)
+    if (head == NULL)
     {
         printf("No item to print.");
         return;
     }
     struct Qnode *t = head;
-    while(t!=NULL)
+    while (t != NULL)
     {
         printf("%d ", t->data);
         t = t->next;
@@ -68,17 +65,19 @@ void display(struct Qnode *head)
 void main()
 {
     struct Qnode *front = NULL;
-    enq(&front);
-    enq(&front);
-    enq(&front);
-    enq(&front);
-    enq(&front);
+    struct Qnode *rear = NULL;
+
+    enq(&front, &rear);
+    enq(&front, &rear);
+    enq(&front, &rear);
+    enq(&front, &rear);
+    enq(&front, &rear);
     display(front);
     deq(&front);
     deq(&front);
     deq(&front);
     display(front);
-    enq(&front);
+    enq(&front, &rear);
     deq(&front);
     deq(&front);
     deq(&front);
@@ -86,7 +85,7 @@ void main()
     deq(&front);
     deq(&front);
     deq(&front);
-    enq(&front);
+    enq(&front, &rear);
     display(front);
     deq(&front);
     deq(&front);

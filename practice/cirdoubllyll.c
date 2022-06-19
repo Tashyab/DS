@@ -32,7 +32,7 @@ void insert(struct Node** head)
 
     struct Node *t = (struct Node *)malloc(sizeof(struct Node));
     t->data = d;
-    struct Node *move = *head;
+    struct Node *move = *head; //The node before which you have to insert
     int i;
     if(k==0)
     {
@@ -84,7 +84,7 @@ void delete(struct Node** head)
     }
     else
     {
-        for (i = 0; i < k; i++)
+        for (i = 1; i < k+1; i++)
         {
             move = move->next;
             if(move==(*head))
